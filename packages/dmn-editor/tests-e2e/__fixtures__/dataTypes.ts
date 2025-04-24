@@ -84,6 +84,10 @@ export class DataTypes {
     await this.get().getByRole("button", { name: "Create a custom data type" }).click();
   }
 
+  public async pasteFirstDataType() {
+    await this.get().getByRole("button", { name: "Paste data type" }).click();
+  }
+
   public async createNewDataType() {
     await this.get().getByLabel("Add Data Type").click();
   }

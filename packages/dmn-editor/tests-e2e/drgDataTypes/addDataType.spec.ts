@@ -21,7 +21,7 @@ import { test, expect } from "../__fixtures__/base";
 import { DataType } from "../__fixtures__/dataTypes";
 import { TabName } from "../__fixtures__/editor";
 
-test.describe("Create Custom Data Types", () => {
+test.describe("Create Data Types", () => {
   test.beforeEach(async ({ editor, dataTypes }) => {
     await editor.open();
     await editor.changeTab({ tab: TabName.DATA_TYPES });
@@ -48,13 +48,13 @@ test.describe("Create Custom Data Types", () => {
       await expect(dataTypes.getDataType({ name: "Custom data type - Boolean" })).toBeAttached();
     });
 
-    test(`Create context data type`, async ({ dataTypes }) => {
+    test(`Create Context data type`, async ({ dataTypes }) => {
       await dataTypes.changeDataTypeName({ newName: "Custom data type - Context" });
       await dataTypes.changeDataTypeBaseType({ newBaseType: DataType.Context });
       await expect(dataTypes.getDataType({ name: "Custom data type - Context" })).toBeAttached();
     });
 
-    test(`Custom data type - Date`, async ({ dataTypes }) => {
+    test(`Custom Date data type`, async ({ dataTypes }) => {
       await dataTypes.changeDataTypeName({ newName: "Custom data type - Date" });
       await dataTypes.changeDataTypeBaseType({ newBaseType: DataType.Date });
       await expect(dataTypes.getDataType({ name: "Custom data type - Date" })).toBeAttached();
@@ -62,7 +62,7 @@ test.describe("Create Custom Data Types", () => {
 
     test(`create DateTime data type`, async ({ dataTypes }) => {
       await dataTypes.changeDataTypeName({ newName: "Custom data type - DateTime" });
-      await dataTypes.changeDataTypeBaseType({ newBaseType: DataType.Date });
+      await dataTypes.changeDataTypeBaseType({ newBaseType: DataType.DateTime });
       await expect(dataTypes.getDataType({ name: "Custom data type - DateTime" })).toBeAttached();
     });
 

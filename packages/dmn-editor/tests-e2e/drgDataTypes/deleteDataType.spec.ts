@@ -21,8 +21,8 @@ import { test, expect } from "../__fixtures__/base";
 import { DataType } from "../__fixtures__/dataTypes";
 import { TabName } from "../__fixtures__/editor";
 
-test.describe("Remove - Custom Data Type", () => {
-  test(`should remove a custom data type `, async ({ editor, diagram, dataTypes, page }) => {
+test.describe("Delete - Custom Data Type", () => {
+  test(`should delete a custom data type `, async ({ editor, diagram, dataTypes, page }) => {
     await editor.open();
     await editor.changeTab({ tab: TabName.DATA_TYPES });
     await dataTypes.createFirstCustonDataType();
