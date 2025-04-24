@@ -56,6 +56,14 @@ export class DataTypes {
     return this.page.getByTestId("kie-tools--dmn-editor--data-types-container");
   }
 
+  public resetFocus() {
+    return this.get().click({ position: { x: 0, y: 0 } });
+  }
+
+  public getDataType(args: { name: string }) {
+    return this.page.getByTestId("kie-tools--dmn-editor--data-types-list").getByText(args.name, { exact: true });
+  }
+
   public getNoneConstraintButton() {
     return this.get().getByRole("button", { name: ConstraintType.NONE, exact: true });
   }
@@ -86,6 +94,10 @@ export class DataTypes {
 
   public async changeDataTypeName(args: { newName: string }) {
     await this.get().getByPlaceholder("Enter a name...").fill(args.newName);
+  }
+
+  public async addDataTypeDescription(args: { newDescription: string }) {
+    await this.get().getByPlaceholder("Enter a description...").fill(args.newDescription);
   }
 
   public async changeDataTypeBaseType(args: { newBaseType: DataType }) {
