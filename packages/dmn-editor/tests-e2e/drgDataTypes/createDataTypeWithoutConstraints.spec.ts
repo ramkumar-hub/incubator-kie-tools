@@ -21,7 +21,7 @@ import { test, expect } from "../__fixtures__/base";
 import { DataType } from "../__fixtures__/dataTypes";
 import { TabName } from "../__fixtures__/editor";
 
-test.describe("Create Data Types", () => {
+test.describe("Create Data Types - Without Constraint", () => {
   test.beforeEach(async ({ editor, dataTypes }) => {
     await editor.open();
     await editor.changeTab({ tab: TabName.DATA_TYPES });
