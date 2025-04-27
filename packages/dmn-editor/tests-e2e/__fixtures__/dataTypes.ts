@@ -84,6 +84,19 @@ export class DataTypes {
     return this.page.getByTestId("kie-tools--dmn-editor--readonly-expression-constraint-with-value");
   }
 
+  public enableDataTypeStruct() {
+    this.get().locator("span", { hasText: "Is struct?" }).last().click();
+  }
+
+  public async addDataTypeStructProperty(args: { name: string }) {
+    await this.get().getByTitle("Add item component (at the top)").click();
+    await this.changeDataTypePropertiesTable({ name: args.name });
+  }
+
+  public changeDataTypePropertiesTable(args: { name: string }) {
+    return this.get().getByRole("table").getByPlaceholder("Enter a name...").first().fill(args.name);
+  }
+
   public async createFirstCustonDataType() {
     await this.get().getByRole("button", { name: "Create a custom data type" }).click();
   }
