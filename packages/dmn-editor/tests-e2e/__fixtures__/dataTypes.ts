@@ -80,6 +80,10 @@ export class DataTypes {
     return this.get().getByRole("button", { name: ConstraintType.RANGE, exact: true });
   }
 
+  public getReadonlyExpressionConstraintValue() {
+    return this.page.getByTestId("kie-tools--dmn-editor--readonly-expression-constraint-with-value");
+  }
+
   public async createFirstCustonDataType() {
     await this.get().getByRole("button", { name: "Create a custom data type" }).click();
   }
