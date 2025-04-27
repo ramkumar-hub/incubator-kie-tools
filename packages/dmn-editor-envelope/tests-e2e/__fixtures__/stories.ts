@@ -17,17 +17,22 @@
  * under the License.
  */
 
-const { varsWithName, composeEnv } = require("@kie-tools-scripts/build-env");
+import { Page } from "@playwright/test";
 
-module.exports = composeEnv([require("@kie-tools/root-env/env"), require("@kie-tools-core/webpack-base/env")], {
-  vars: varsWithName({}),
-  get env() {
-    return {
-      dmnEditorEnvelope: {
-        storybook: {
-          port: "9902",
-        },
-      },
-    };
-  },
-});
+export class Stories {
+  constructor(
+    private readonly page: Page,
+    private readonly baseURL?: string
+  ) {}
+
+  private getIframeURL(iframeId: string) {
+    return `iframe.html?id=${iframeId}&viewMode=story`;
+  }
+
+  public async openEmptyWithAvailableExternalModels() {
+    await this.page.goto(
+      `${this.baseURL}/${this.getIframeURL(`misc-emptywithavailableexternalmodels--empty-with-available-external-models`)}` ??
+        ""
+    );
+  }
+}

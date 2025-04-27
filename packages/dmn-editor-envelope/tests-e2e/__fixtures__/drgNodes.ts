@@ -17,17 +17,26 @@
  * under the License.
  */
 
-const { varsWithName, composeEnv } = require("@kie-tools-scripts/build-env");
+import { Page } from "@playwright/test";
+import { Diagram } from "./diagram";
 
-module.exports = composeEnv([require("@kie-tools/root-env/env"), require("@kie-tools-core/webpack-base/env")], {
-  vars: varsWithName({}),
-  get env() {
-    return {
-      dmnEditorEnvelope: {
-        storybook: {
-          port: "9902",
-        },
-      },
-    };
-  },
-});
+export class DrgNodes {
+  constructor(
+    public diagram: Diagram,
+    public page: Page
+  ) {}
+
+  public async toggle() {
+    await this.page.getByTitle("DRG Nodes").click();
+  }
+
+  public popover() {
+    return this.page.getByTestId("kie-tools--dmn-editor--palette-nodes-popover");
+  }
+
+  public async dragNode(args: { name: string; targetPosition: { x: number; y: number } }) {
+    await this.popover()
+      .getByText(args.name, { exact: true })
+      .dragTo(this.diagram.get(), { targetPosition: args.targetPosition });
+  }
+}
