@@ -30,9 +30,6 @@ export class Stories {
   }
 
   public async openEmptyWithAvailableExternalModels() {
-    await this.page.goto(
-      `${this.baseURL}/${this.getIframeURL(`misc-emptywithavailableexternalmodels--empty-with-available-external-models`)}` ??
-        ""
-    );
+    await this.page.goto(`${this.baseURL}/${this.getIframeURL(`dev-web-app--web-app`)}` ?? "");
   }
 }
