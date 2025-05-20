@@ -34,7 +34,7 @@ export class Editor {
   ) {}
 
   public async open() {
-    await this.page.goto(`${this.baseURL}/iframe.html?args=&id=dev-web-app--web-app&viewMode=story`);
+    await this.page.goto(`${this.baseURL}/iframe.html?args=&id=dev-envelope-app--web-app&viewMode=story`);
   }
 
   public async openLoanPreQualification() {
@@ -57,5 +57,9 @@ export class Editor {
 
   public async changeTab(args: { tab: TabName }) {
     await this.page.getByRole("tab", { name: args.tab }).click();
+  }
+
+  public getEditCount() {
+    return this.page.locator("#edit-counter");
   }
 }
